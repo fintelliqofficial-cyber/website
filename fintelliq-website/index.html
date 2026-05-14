@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FintelliQ - Daily Market Insights on WhatsApp</title>
+  <meta name="description" content="FintelliQ helps Indian retail investors understand daily market movements in simple language through WhatsApp." />
+
+  <style>
+    :root {
+      --bg: #07130f;
+      --card: #0f211b;
+      --text: #f4fff9;
+      --muted: #b9cec5;
+      --green: #20c878;
+      --green-soft: #d9fbe9;
+      --gold: #f5c451;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(32,200,120,0.22), transparent 35%),
+        radial-gradient(circle at top right, rgba(245,196,81,0.18), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand span {
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #03120b;
+      font-weight: 700;
+      box-shadow: 0 12px 30px rgba(32,200,120,0.28);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(32,200,120,0.35);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .hero {
+      padding: 84px 0 64px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--green-soft);
+      background: rgba(255,255,255,0.05);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 0.96;
+      letter-spacing: -0.07em;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 19px;
+      max-width: 640px;
+      margin-bottom: 30px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .phone-card {
+      background: linear-gradient(180deg, #172f27, #081811);
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .phone-screen {
+      background: #efeae2;
+      color: #111;
+      border-radius: 26px;
+      overflow: hidden;
+      min-height: 620px;
+    }
+
+    .phone-top {
+      background: #075e54;
+      color: white;
+      padding: 18px;
+      font-weight: 700;
+    }
+
+    .chat {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bubble {
+      background: white;
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .bubble strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .daily-preview {
+      max-height: 540px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .daily-preview::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 70px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+    }
+
+    .daily-preview p {
+      margin: 12px 0;
+      color: #222;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .preview-date {
+      color: #667;
+      font-size: 12px;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .preview-disclaimer {
+      color: #555 !important;
+      font-size: 12px !important;
+      font-style: italic;
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      margin-bottom: 14px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 26px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #03120b;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, rgba(32,200,120,0.14), rgba(245,196,81,0.12));
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .highlight h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -0.05em;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .highlight p {
+      color: var(--muted);
+      margin-bottom: 22px;
+      font-size: 17px;
+    }
+
+    .disclaimer {
+      background: rgba(255,255,255,0.04);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .disclaimer p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    footer {
+      padding: 36px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .grid-3,
+      .steps,
+      .highlight {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .phone-screen {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">Fintelli<span>Q</span></div>
+      <nav class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#insights">What you get</a>
+        <a href="#sources">Data sources</a>
+        <a class="button" href="https://wa.me/919187457807?text=Hi">Try on WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Daily market education on WhatsApp</div>
+          <h1>Understand the market without the jargon.</h1>
+          <p>
+            FintelliQ helps Indian retail investors understand what moved the market,
+            why it matters, and what they can learn from it — directly on WhatsApp.
+          </p>
+
+          <div class="cta-row">
+            <a class="button">Start with “Hi”</a>
+            <a class="button secondary" href="#insights">See what you get</a>
+          </div>
+
+          <div class="small-note">
+            No app download. No complicated dashboard. Just WhatsApp.
+          </div>
+        </div>
+
+        <div class="phone-card">
+          <div class="phone-screen">
+            <div class="phone-top">FintelliQ</div>
+
+            <div class="chat">
+              <div class="bubble daily-preview">
+                <div class="preview-date">FintelliQ Daily · 15 May 2026</div>
+
+                <strong>
+                  Nifty Surges 1.18% on Banking and Metal Strength; ICICI Bank, HDFC Bank Lead Gains
+                </strong>
+
+                <p>
+                  <b>📊 Market Data:</b><br />
+                  ICICIBANK : 1248.7 (1.06%)<br />
+                  NIFTY 50 : 23689.6 (1.18%)<br />
+                  LT : 3934.0 (0.46%)<br />
+                  INFY : 1094.1 (-2.58%)<br />
+                  NIFTY METAL : 13562.25 (2.04%)<br />
+                  HDFCBANK : 770.1 (2.73%)<br />
+                  NIFTY COMMODITIES : 10338.45 (1.04%)<br />
+                  RELIANCE : 1368.5 (0.71%)<br />
+                  NIFTY BANK : 54128.95 (1.26%)
+                </p>
+
+                <p>
+                  <b>🌍 Beyond Stocks:</b><br />
+                  Silver: 282.65 (+0.64%)
+                </p>
+
+                <p>
+                  <b>📰 News Summary:</b><br />
+                  The Indian market saw a strong upward trend today, with the Nifty 50 closing at 23689.6,
+                  up 1.18%. This rally was significantly boosted by the banking sector, with HDFC Bank
+                  and ICICI Bank showing robust performance. The metals sector also contributed positively,
+                  with the Nifty Metal index gaining 2.04%.
+                </p>
+
+                <p>
+                  <b>📋 Market Analysis:</b><br />
+                  Today's market surge was propelled by domestic strength in banking and commodities.
+                  The movement suggests investors were rotating into cyclical sectors while global cues
+                  around precious metals and US tech added broader context.
+                </p>
+
+                <p>
+                  <b>💡 Impact Analysis:</b><br />
+                  For retail investors, today's move highlights the importance of sector diversification
+                  and understanding market drivers beyond headlines. While the Nifty advanced broadly,
+                  individual stock performance varied significantly.
+                </p>
+
+                <p>
+                  <b>🎓 Today's Lesson:</b><br />
+                  Sector rotation happens when investors shift money from one sector to another based on
+                  changing expectations. Today’s metal and banking strength is one example of how market
+                  leadership can change across sectors.
+                </p>
+
+                <p class="preview-disclaimer">
+                  This newsletter is for financial education only — not investment advice.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="insights">
+      <div class="container">
+        <div class="section-title">
+          <h2>Built for everyday Indian investors.</h2>
+          <p>
+            Most market updates tell you what happened. FintelliQ focuses on helping you understand why it happened.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Market snapshot</h3>
+            <p>Track major indices and relevant market movers in a concise daily format.</p>
+          </div>
+
+          <div class="card">
+            <h3>Beyond Stocks</h3>
+            <p>Follow gold, silver, rupee, crude, and other macro signals that influence Indian markets.</p>
+          </div>
+
+          <div class="card">
+            <h3>Simple analysis</h3>
+            <p>Understand the connection between news, sectors, commodities, currency, and investor behaviour.</p>
+          </div>
+
+          <div class="card">
+            <h3>Beginner friendly</h3>
+            <p>No unexplained jargon. Each update is written for beginners and intermediate investors.</p>
+          </div>
+
+          <div class="card">
+            <h3>Personalized context</h3>
+            <p>Your daily insight is tailored using your investing experience, goals, and risk preference.</p>
+          </div>
+
+          <div class="card">
+            <h3>One useful lesson</h3>
+            <p>Learn one financial concept from the day’s market movement so you build better investing instincts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="section-title">
+          <h2>Start in less than a minute.</h2>
+          <p>FintelliQ works entirely on WhatsApp.</p>
+        </div>
+
+        <div class="steps">
+          <div class="card">
+            <div class="step-number">1</div>
+            <h3>Send Hi</h3>
+            <p>Message FintelliQ on WhatsApp to begin your setup.</p>
+          </div>
+
+          <div class="card">
+            <div class="step-number">2</div>
+            <h3>Answer 5 questions</h3>
+            <p>Tell us your experience, interests, risk style, and financial goals.</p>
+          </div>
+
+          <div class="card">
+            <div class="step-number">3</div>
+            <h3>Get daily insights</h3>
+            <p>Request your market insight by sending “Daily Update” or “Send Daily Update”.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="highlight">
+          <div>
+            <h2>Try FintelliQ on WhatsApp today.</h2>
+            <p>
+              Get daily market education, news context, macro signals, and investing lessons in simple English.
+            </p>
+          </div>
+          <div>
+            <a class="button" href="https://wa.me/919187457807?text=Hi">Open WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources" class="disclaimer">
+      <div class="container">
+        <div class="section-title">
+          <h2>Data sources and disclaimer.</h2>
+        </div>
+
+        <p>
+          FintelliQ uses publicly available market data, news sources, and third-party financial data providers
+          to generate educational market summaries.
+        </p>
+
+        <p>
+          Gold and silver price data may be powered by
+          <a href="https://goldpricez.com" target="_blank" rel="noopener nofollow">GoldPriceZ.com</a>.
+        </p>
+
+        <p>
+          FintelliQ provides financial education and market context only. It does not provide investment advice,
+          buy/sell recommendations, portfolio management, or guaranteed outcomes. Please consult a SEBI-registered
+          investment advisor before making investment decisions.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>© 2026 FintelliQ. Built in India, for India.</div>
+      <div>Financial education on WhatsApp.</div>
+    </div>
+  </footer>
+</body>
+</html>
