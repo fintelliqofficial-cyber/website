@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -341,26 +340,85 @@
       flex-wrap: wrap;
     }
 
-    @media (max-width: 860px) {
-      .hero-grid,
-      .grid-3,
-      .steps,
-      .highlight {
-        grid-template-columns: 1fr;
-      }
+.whatsapp-phone {
+  padding: 14px;
+  background: linear-gradient(
+    180deg,
+    #17342a,
+    #081510
+  );
+}
 
-      .nav-links {
-        display: none;
-      }
+.dark-phone {
+  background: #0b141a;
+  border-radius: 28px;
+  min-height: 640px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 22px;
+}
 
-      .hero {
-        padding-top: 54px;
-      }
+.wa-card {
+  width: 100%;
+  background: #202c33;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
 
-      .phone-screen {
-        min-height: auto;
-      }
-    }
+.wa-content {
+  padding: 24px;
+}
+
+.wa-date {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.wa-intro {
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 32px;
+}
+
+.wa-headline {
+  font-size: 34px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 36px;
+  letter-spacing: -0.03em;
+}
+
+.wa-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255,255,255,0.7);
+  font-size: 15px;
+}
+
+.wa-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #25d366;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 18px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.wa-action:hover {
+  background: rgba(255,255,255,0.03);
+}
   </style>
 </head>
 
@@ -398,72 +456,49 @@
           </div>
         </div>
 
-        <div class="phone-card">
-          <div class="phone-screen">
-            <div class="phone-top">FintelliQ</div>
+        <div class="phone-card whatsapp-phone">
+  <div class="phone-screen dark-phone">
 
-            <div class="chat">
-              <div class="bubble daily-preview">
-                <div class="preview-date">FintelliQ Daily · 15 May 2026</div>
+    <div class="wa-card">
 
-                <strong>
-                  Nifty Surges 1.18% on Banking and Metal Strength; ICICI Bank, HDFC Bank Lead Gains
-                </strong>
+      <div class="wa-content">
 
-                <p>
-                  <b>📊 Market Data:</b><br />
-                  ICICIBANK : 1248.7 (1.06%)<br />
-                  NIFTY 50 : 23689.6 (1.18%)<br />
-                  LT : 3934.0 (0.46%)<br />
-                  INFY : 1094.1 (-2.58%)<br />
-                  NIFTY METAL : 13562.25 (2.04%)<br />
-                  HDFCBANK : 770.1 (2.73%)<br />
-                  NIFTY COMMODITIES : 10338.45 (1.04%)<br />
-                  RELIANCE : 1368.5 (0.71%)<br />
-                  NIFTY BANK : 54128.95 (1.26%)
-                </p>
-
-                <p>
-                  <b>🌍 Beyond Stocks:</b><br />
-                  Silver: 282.65 (+0.64%)
-                </p>
-
-                <p>
-                  <b>📰 News Summary:</b><br />
-                  The Indian market saw a strong upward trend today, with the Nifty 50 closing at 23689.6,
-                  up 1.18%. This rally was significantly boosted by the banking sector, with HDFC Bank
-                  and ICICI Bank showing robust performance. The metals sector also contributed positively,
-                  with the Nifty Metal index gaining 2.04%.
-                </p>
-
-                <p>
-                  <b>📋 Market Analysis:</b><br />
-                  Today's market surge was propelled by domestic strength in banking and commodities.
-                  The movement suggests investors were rotating into cyclical sectors while global cues
-                  around precious metals and US tech added broader context.
-                </p>
-
-                <p>
-                  <b>💡 Impact Analysis:</b><br />
-                  For retail investors, today's move highlights the importance of sector diversification
-                  and understanding market drivers beyond headlines. While the Nifty advanced broadly,
-                  individual stock performance varied significantly.
-                </p>
-
-                <p>
-                  <b>🎓 Today's Lesson:</b><br />
-                  Sector rotation happens when investors shift money from one sector to another based on
-                  changing expectations. Today’s metal and banking strength is one example of how market
-                  leadership can change across sectors.
-                </p>
-
-                <p class="preview-disclaimer">
-                  This newsletter is for financial education only — not investment advice.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="wa-date">
+          FintelliQ Daily - 08 Jun 2026
         </div>
+
+        <div class="wa-intro">
+          Your Personalised Financial Updates are here.
+        </div>
+
+        <div class="wa-headline">
+          Indian Markets Dip Amidst Geopolitical Tensions and LPG Price Hike;
+          Metals and EV Stocks Lead Decline
+        </div>
+
+        <div class="wa-footer">
+          <span>Powered by FintelliQ 🚀</span>
+          <span>7:07 PM</span>
+        </div>
+
+      </div>
+
+      <div class="wa-action">
+        ↩ Market Impact
+      </div>
+
+      <div class="wa-action">
+        ↩ Market Summary
+      </div>
+
+      <div class="wa-action">
+        ☰ See all options
+      </div>
+
+    </div>
+
+  </div>
+</div>
       </div>
     </section>
 
@@ -533,7 +568,7 @@
           <div class="card">
             <div class="step-number">3</div>
             <h3>Get daily insights</h3>
-            <p>Request your market insight by sending “Daily Update” or “Send Daily Update”.</p>
+            <p>Automated Delivery of your personalised insights everyday at sharp 8:30 AM.</p>
           </div>
         </div>
       </div>
