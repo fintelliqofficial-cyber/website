@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FintelliQ</title>
+    <script>
+        (function () {
+            var path = window.location.pathname;
+            var match = path.match(/^\/portfolio\/([^/]+)\/?$/);
+            if (match && match[1] !== "index.html") {
+                window.location.replace(
+                    "/portfolio/index.html?user=" + encodeURIComponent(match[1])
+                );
+                return;
+            }
+            window.location.replace("/");
+        })();
+    </script>
+</head>
+<body></body>
+</html>

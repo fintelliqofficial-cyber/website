@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!-- Ads: add class "ads-enabled" to <html> to show ad slots (see css/ads.css) -->
+<html lang="en">
+<!--<html lang="en" class="ads-enabled">-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>FintelliQ</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/onboarding.css">
+    <link rel="stylesheet" href="css/ads.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div id="loadingView" class="loadingView">
+    <div class="loadingSpinner"></div>
+</div>
+
+<div id="onboardingView" class="onboardingView hidden">
+    <div class="onboardingPage">
+        <div class="onboardingHeader">
+            <div id="onboardingBack"></div>
+            <div id="onboardingProgress"></div>
+        </div>
+        <div id="onboardingContent"></div>
+    </div>
+</div>
+
+<div id="dashboardView" class="hidden">
+<div class="dashboardShell">
+
+    <!-- Side ad: left (desktop browser only, 1024px+) -->
+    <aside class="adSlot adSlot--side adSlot--left" aria-label="Advertisement">
+        <span class="adSlotLabel">Sponsored</span>
+        <div class="adSlotContent" id="adSideLeft">
+            <!-- Paste AdSense / sponsor code here -->
+        </div>
+    </aside>
+
+<div class="page">
+
+    <header class="header">
+        <div>
+            <div class="logo">
+                <span class="logo-dark">Fintelli</span><span class="logo-green">Q</span>
+            </div>
+            <div class="subTitle">
+                Today's Overview
+                <span class="date" id="dashboardDate"></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="card heroCard">
+        <div class="portfolioSummary">
+            <div class="sectionTitle">Net Portfolio Value</div>
+            <div class="portfolioValue" id="portfolioValue">₹0</div>
+            <div class="todayLabel">Today's Change</div>
+            <div class="portfolioChange" id="portfolioChange">+₹0 (+0%)</div>
+            <button class="impactButton" type="button" data-action="stocks-moved">
+                <i class="fa-solid fa-circle-info"></i>
+                <span id="impactCount">0 stocks moved today</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <div class="moversPanel hidden" id="moversPanel"></div>
+        </div>
+
+        <div class="allocationSection">
+            <div class="sectionTitle">Portfolio Allocation</div>
+            <div class="allocationContent">
+                <div class="chartContainer">
+                    <canvas id="allocationChart"></canvas>
+                </div>
+                <div class="allocationLegend" id="allocationLegend"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="sectionTitle">Sector Performance (Today)</div>
+        <div class="chartWrapper">
+            <canvas id="sectorChart"></canvas>
+        </div>
+        <div class="chartFooter">
+            Change represents average change in your holdings in that sector
+        </div>
+    </section>
+
+    <section class="card" id="holdingsSection">
+        <div class="cardHeader">
+            <div class="sectionTitle sectionTitle--inline">
+                Your Holdings (<span id="holdingCount">0</span>)
+            </div>
+            <button class="smallEdit" type="button" data-action="edit-holdings">
+                <i class="fa-solid fa-pen"></i>
+                Edit
+            </button>
+        </div>
+        <div class="tableScroll tableScroll--fixed">
+            <table class="portfolioTable holdingsTable">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="tableHeadCell tableHeadCell--left">
+                                <span class="thPrimary">Stock</span>
+                                <span class="thSecondary">Sector</span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="tableHeadCell tableHeadCell--right">
+                                <span class="thPrimary">Avg Price</span>
+                                <span class="thSecondary">Quantity</span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="tableHeadCell tableHeadCell--right">
+                                <span class="thPrimary">Holding Value</span>
+                                <span class="thSecondary">Last Traded Price</span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="tableHeadCell tableHeadCell--right">
+                                <span class="thPrimary">Change %</span>
+                                <span class="thSecondary">Amount</span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="tableHeadCell tableHeadCell--right">
+                                <span class="thPrimary">Weight</span>
+                                <span class="thSecondary">Allocation</span>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="holdingTable"></tbody>
+            </table>
+        </div>
+        <button class="viewMore" type="button" data-action="view-holdings">
+            View all holdings
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </section>
+
+    <section class="card" id="watchlistSection">
+        <div class="cardHeader">
+            <div class="sectionTitle sectionTitle--inline">
+                Your Watchlist (<span id="watchCount">0</span>)
+            </div>
+            <button class="smallEdit" type="button" data-action="edit-watchlist">
+                <i class="fa-solid fa-pen"></i>
+                Edit
+            </button>
+        </div>
+        <div class="tableScroll tableScroll--fixed">
+            <table class="portfolioTable watchlistTable">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="tableHeadCell tableHeadCell--left">
+                                <span class="thPrimary">Stock</span>
+                                <span class="thSecondary">Sector</span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="tableHeadCell tableHeadCell--right">
+                                <span class="thPrimary">Price</span>
+                                <span class="thSecondary">Last Traded Price</span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="tableHeadCell tableHeadCell--right">
+                                <span class="thPrimary">Change %</span>
+                                <span class="thSecondary">Amount</span>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="watchlistTable"></tbody>
+            </table>
+        </div>
+        <button class="viewMore" type="button" data-action="view-watchlist">
+            View all watchlist
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </section>
+
+    <section class="insightBanner">
+        <div class="insightContent">
+            <div class="insightIcon">
+                <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <p class="insightText">
+                <strong>Insightful. Personalized. Actionable.</strong>
+                We analyze markets and your portfolio every morning to help you stay ahead.
+            </p>
+        </div>
+        <div class="insightGraphic" aria-hidden="true">
+            <svg viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="28" width="8" height="16" rx="2" fill="#86EFAC"/>
+                <rect x="18" y="20" width="8" height="24" rx="2" fill="#4ADE80"/>
+                <rect x="32" y="12" width="8" height="32" rx="2" fill="#22C55E"/>
+                <rect x="46" y="18" width="8" height="26" rx="2" fill="#16A34A"/>
+                <rect x="60" y="8" width="8" height="36" rx="2" fill="#15803D"/>
+                <polyline points="4,26 20,18 36,14 52,20 68,10" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Bottom ad: mobile + desktop -->
+    <aside class="adSlot adSlot--bottom" aria-label="Advertisement">
+        <span class="adSlotLabel">Sponsored</span>
+        <div class="adSlotContent" id="adBottom">
+            <!-- Paste AdSense / sponsor code here -->
+        </div>
+    </aside>
+
+</div>
+
+    <!-- Side ad: right (desktop browser only, 1024px+) -->
+    <aside class="adSlot adSlot--side adSlot--right" aria-label="Advertisement">
+        <span class="adSlotLabel">Sponsored</span>
+        <div class="adSlotContent" id="adSideRight">
+            <!-- Paste AdSense / sponsor code here -->
+        </div>
+    </aside>
+
+</div>
+</div>
+
+<div id="listModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modalBackdrop" data-action="close-modal"></div>
+    <div class="modalPanel">
+        <div class="modalHeader">
+            <h2 class="modalTitle" id="modalTitle">All Items</h2>
+            <button type="button" class="modalClose" data-action="close-modal" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="modalBody" id="modalBody"></div>
+    </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/onboarding.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

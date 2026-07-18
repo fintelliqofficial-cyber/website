@@ -1,0 +1,90 @@
+@media (max-width: 380px) {
+    .page {
+        padding: var(--space-4) var(--space-3) var(--space-6);
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .portfolioValue {
+        font-size: 30px;
+    }
+
+    .changeAmount {
+        font-size: 18px;
+    }
+
+    .heroCard {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+    }
+
+    .allocationContent {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chartContainer {
+        width: 110px;
+        height: 110px;
+    }
+
+    .impactButton {
+        font-size: 10px;
+        padding: 8px 12px;
+    }
+
+    .onboardingPage {
+        padding: var(--space-4);
+    }
+
+    .onboardingTitle,
+    .stepTitle {
+        font-size: 22px;
+    }
+
+    .interestsGrid {
+        gap: var(--space-2);
+    }
+
+    .interestCard {
+        min-height: 96px;
+        padding: var(--space-4) var(--space-2);
+    }
+}
+
+@media (min-width: 431px) {
+    body {
+        background: #EEF2F7;
+    }
+
+    .page {
+        margin-top: var(--space-5);
+        margin-bottom: var(--space-5);
+        background: var(--background);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow);
+    }
+
+    .onboardingView {
+        background: #EEF2F7;
+    }
+
+    .onboardingPage {
+        margin-top: var(--space-5);
+        margin-bottom: var(--space-5);
+        background: #FFFFFF;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow);
+        min-height: calc(100vh - 40px);
+    }
+}
+
+@media (min-width: 1024px) {
+    #dashboardView .dashboardShell .page {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

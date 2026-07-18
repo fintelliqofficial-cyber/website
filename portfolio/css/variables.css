@@ -1,0 +1,91 @@
+:root {
+
+    /* COLORS */
+
+    --primary: #16A34A;
+    --primary-light: #DCFCE7;
+
+    --danger: #DC2626;
+    --danger-light: #FEE2E2;
+
+    --background: #F5F7FB;
+
+    --card: #FFFFFF;
+
+    --text-primary: #0F172A;
+    --text-secondary: #64748B;
+    --text-light: #94A3B8;
+
+    --border: #E5E7EB;
+
+
+
+    /* PIE CHART */
+
+    --sector-it: #2563EB;
+    --sector-bank: #0F766E;
+    --sector-auto: #F59E0B;
+    --sector-defence: #7C3AED;
+    --sector-fmcg: #64748B;
+
+
+
+    /* SHADOW */
+
+    --shadow:
+        0 4px 10px rgba(15,23,42,.03),
+        0 14px 30px rgba(15,23,42,.05);
+
+
+
+    /* TYPOGRAPHY */
+
+    --font-family: "Inter", sans-serif;
+
+    --font-xs: 11px;
+    --font-sm: 13px;
+    --font-md: 15px;
+    --font-lg: 18px;
+    --font-xl: 24px;
+    --font-2xl: 42px;
+
+
+
+    /* FONT WEIGHTS */
+
+    --weight-regular:400;
+    --weight-medium:500;
+    --weight-semibold:600;
+    --weight-bold:700;
+    --weight-extrabold:800;
+
+
+
+    /* SPACING */
+
+    --space-1:4px;
+    --space-2:8px;
+    --space-3:12px;
+    --space-4:16px;
+    --space-5:20px;
+    --space-6:24px;
+    --space-7:32px;
+    --space-8:40px;
+
+
+
+    /* RADIUS */
+
+    --radius-sm:8px;
+    --radius-md:12px;
+    --radius-lg:18px;
+    --radius-xl:24px;
+
+
+
+    /* ANIMATION */
+
+    --transition-fast:.2s ease;
+    --transition-medium:.35s ease;
+
+}

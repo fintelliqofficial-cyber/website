@@ -1,0 +1,168 @@
+{
+  "generatedAt": "2025-07-01T08:30:00+05:30",
+
+  "portfolio": {
+    "currentValue": 1482350,
+    "todayChange": 21560,
+    "todayChangePercent": 1.48,
+    "holdingsImpacted": 3
+  },
+
+  "allocation": [
+    { "sectorId": "IT", "sectorName": "IT", "weight": 38, "color": "#16A34A" },
+    { "sectorId": "BANK", "sectorName": "Banking", "weight": 27, "color": "#2563EB" },
+    { "sectorId": "AUTO", "sectorName": "Auto", "weight": 16, "color": "#F59E0B" },
+    { "sectorId": "DEF", "sectorName": "Defence", "weight": 11, "color": "#7C3AED" },
+    { "sectorId": "FMCG", "sectorName": "FMCG", "weight": 8, "color": "#DC2626" }
+  ],
+
+  "sectorPerformance": [
+    { "sectorId": "IT", "sectorName": "IT", "changePercent": 1.42 },
+    { "sectorId": "DEF", "sectorName": "Defence", "changePercent": 0.85 },
+    { "sectorId": "AUTO", "sectorName": "Auto", "changePercent": 0.32 },
+    { "sectorId": "FMCG", "sectorName": "FMCG", "changePercent": -0.15 },
+    { "sectorId": "BANK", "sectorName": "Banking", "changePercent": -0.82 }
+  ],
+
+  "holdings": [
+    {
+      "symbol": "TCS",
+      "companyName": "Tata Consultancy Services",
+      "sectorId": "IT",
+      "sectorName": "IT",
+      "quantity": 20,
+      "avgPrice": 3400.00,
+      "currentPrice": 3825.10,
+      "changeAmount": 52.80,
+      "changePercent": 1.40,
+      "weight": 18.2
+    },
+    {
+      "symbol": "HDFCBANK",
+      "companyName": "HDFC Bank",
+      "sectorId": "BANK",
+      "sectorName": "Banking",
+      "quantity": 15,
+      "avgPrice": 1620.00,
+      "currentPrice": 1672.35,
+      "changeAmount": -13.60,
+      "changePercent": -0.80,
+      "weight": 13.4
+    },
+    {
+      "symbol": "RELIANCE",
+      "companyName": "Reliance Industries",
+      "sectorId": "ENERGY",
+      "sectorName": "Oil & Gas",
+      "quantity": 10,
+      "avgPrice": 2914.00,
+      "currentPrice": 2948.60,
+      "changeAmount": 20.60,
+      "changePercent": 0.70,
+      "weight": 12.6
+    },
+    {
+      "symbol": "INFY",
+      "companyName": "Infosys",
+      "sectorId": "IT",
+      "sectorName": "IT",
+      "quantity": 25,
+      "avgPrice": 1420.00,
+      "currentPrice": 1456.75,
+      "changeAmount": 12.20,
+      "changePercent": 0.85,
+      "weight": 11.8
+    },
+    {
+      "symbol": "HCLTECH",
+      "companyName": "HCL Technologies",
+      "sectorId": "IT",
+      "sectorName": "IT",
+      "quantity": 18,
+      "avgPrice": 1580.00,
+      "currentPrice": 1571.60,
+      "changeAmount": -8.40,
+      "changePercent": -0.53,
+      "weight": 9.6
+    },
+    {
+      "symbol": "ICICIBANK",
+      "companyName": "ICICI Bank",
+      "sectorId": "BANK",
+      "sectorName": "Banking",
+      "quantity": 22,
+      "avgPrice": 1180.00,
+      "currentPrice": 1176.70,
+      "changeAmount": -3.30,
+      "changePercent": -0.28,
+      "weight": 8.1
+    }
+  ],
+
+  "watchlist": [
+    {
+      "symbol": "HAL",
+      "companyName": "Hindustan Aeronautics",
+      "sectorName": "Defence",
+      "currentPrice": 5125.80,
+      "changeAmount": 83.10,
+      "changePercent": 1.65
+    },
+    {
+      "symbol": "MARUTI",
+      "companyName": "Maruti Suzuki",
+      "currentPrice": 14152.00,
+      "changeAmount": 59.20,
+      "changePercent": 0.42
+    },
+    {
+      "symbol": "ADANIGREEN",
+      "companyName": "Adani Green Energy",
+      "currentPrice": 1842.50,
+      "changeAmount": -6.50,
+      "changePercent": -0.35
+    },
+    {
+      "symbol": "NTPC",
+      "companyName": "NTPC",
+      "currentPrice": 392.40,
+      "changeAmount": 0.70,
+      "changePercent": 0.18
+    },
+    {
+      "symbol": "LT",
+      "companyName": "Larsen & Toubro",
+      "currentPrice": 3642.00,
+      "changeAmount": 25.70,
+      "changePercent": 0.71
+    },
+    {
+      "symbol": "ABC",
+      "companyName": "ABC",
+      "currentPrice": 392.40,
+      "changeAmount": 0.70,
+      "changePercent": 0.18
+    },
+    {
+      "symbol": "ABB",
+      "companyName": "ABB",
+      "currentPrice": 3642.00,
+      "changeAmount": 25.70,
+      "changePercent": 0.71
+    },
+    {
+      "symbol": "PQR",
+      "companyName": "PQR",
+      "currentPrice": 3642.00,
+      "changeAmount": 25.70,
+      "changePercent": 0.71
+    },
+    {
+      "symbol": "XYZ",
+      "companyName": "XYZ",
+      "currentPrice": 3642.00,
+      "changeAmount": 25.70,
+      "changePercent": 0.71
+    }
+  ]
+}
